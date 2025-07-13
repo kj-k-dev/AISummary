@@ -1,0 +1,48 @@
+# testing 1
+
+You are an assistant that summarizes structured financial transaction data.
+
+Given this JSON data:
+[
+  {"date": "2024-06-01", "amount": 2000, "sender": "Alice", "beneficiary": "Bob", "remark": "Invoice 123"},
+  {"date": "2024-06-02", "amount": 3000, "sender": "Charlie", "beneficiary": "Bob", "remark": "Fund Transfer"},
+  {"date": "2024-07-02", "amount": 3000, "sender": "Charlie", "beneficiary": "Bob", "remark": "Dinner"},
+  {"date": "2024-07-12", "amount": 3000, "sender": "Charlie", "beneficiary": "Bob", "remark": "Fund Transfer"},
+  {"date": "2024-07-22", "amount": 3000, "sender": "Charlie", "beneficiary": "Bob", "remark": "Fund Transfer"}
+]
+
+display sample summary of transaction from the exported transaction which include, count of transaction, amount, date of transaction, parties involve, location as well as relevant remark/detail.
+
+
+
+
+# testing 2
+
+You are an assistant that summarizes structured financial transaction data.
+
+Given this JSON data:
+[
+  {"TRAN_NO": null, "SEND_NAME": null, "SEND_BNAME": null, "SEND_CTY": null, "BENE_NAME": null, "BENE_BNAME": null, "BENE_CTY": null, "TRAN_DATE": 20241016, "AMOUNT": 12345.0}, 
+  {"TRAN_NO": null, "SEND_NAME": null, "SEND_BNAME": null, "SEND_CTY": null, "BENE_NAME": null, "BENE_BNAME": null, "BENE_CTY": null, "TRAN_DATE": 20241018, "AMOUNT": 123.0}, 
+  {"TRAN_NO": null, "SEND_NAME": null, "SEND_BNAME": null, "SEND_CTY": null, "BENE_NAME": null, "BENE_BNAME": null, "BENE_CTY": null, "TRAN_DATE": 20241022, "AMOUNT": 123.0}
+]
+
+display sample summary of transaction from the exported transaction which include, count of transaction, amount, date of transaction, parties involve, location as well as relevant remark/detail.
+
+
+
+# testing 3
+
+
+
+You are an assistant that summarizes structured financial transaction data.
+
+Given this JSON data:
+
+[
+  {"SENDER_NAME": "john", "SENDER_BANK": "Maybank", "BENEFICIARY_NAME": "Aaron", "BENEFICIARY_BANK": "unknown", "TOTAL_AMOUNT": 12591.0, "FIRST_TRAN_DATE": "2024-10-16", "LAST_TRAN_DATE": "2024-10-22"},
+  {"SENDER_NAME": "Aaron", "SENDER_BANK": "unknown", "BENEFICIARY_NAME": "Bryan", "BENEFICIARY_BANK": "Swiss Bank", "TOTAL_AMOUNT": 100500.0, "FIRST_TRAN_DATE": "2024-12-16", "LAST_TRAN_DATE": "2025-05-22"},
+  {"SENDER_NAME": "unknown", "SENDER_BANK": "unknown", "BENEFICIARY_NAME": "unknown", "BENEFICIARY_BANK": "unknown", "TOTAL_AMOUNT": 12591.0, "FIRST_TRAN_DATE": "2024-10-16", "LAST_TRAN_DATE": "2024-10-22"}
+]
+
+display sample summary of transaction from the exported transaction which include, count of transaction, amount, date of transaction, parties involve, location as well as relevant detail.
