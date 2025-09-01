@@ -1,0 +1,42 @@
+[
+    {
+        "fieldName": "hitRule_ruleId",
+        "description": "rule ID hit by customer for respective module"
+    },
+    {
+        "fieldName": "transactionSummary",
+        "description": "the transaction summary of the customer, including transaction amount, count and transaction monitoring rule hit by transaction"
+    },
+    {
+        "fieldName": "customer_age",
+        "description": "age of the customer"
+    },
+    {
+        "fieldName": "customer_nationality",
+        "description": "nationality of the customer"
+    },
+    {
+        "fieldName": "customer_occupation",
+        "description": "occupation of the customer"
+    },
+    {
+        "fieldName": "customer_industry",
+        "description": "industry of the customer"
+    },
+    {
+        "fieldName": "customer_monthlyIncome",
+        "description": "monthly income of the customer"
+    },
+    {
+        "fieldName": "customerRisk_currentRisk",
+        "description": "current system risk of the customer"
+    },
+    {
+        "fieldName": "customerRisk_previousRisk",
+        "description": "previous system risk of the customer"
+    },
+    {
+        "fieldName": "customerRisk_manualRisk",
+        "description": "manual risk of the customer"
+    }
+]

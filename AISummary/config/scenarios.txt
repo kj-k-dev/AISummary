@@ -1,0 +1,2 @@
+1. Customer has high risk.
+2. Customer hit rule RLT1.
