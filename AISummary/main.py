@@ -1,21 +1,37 @@
 import re
 from keywordExtractor import KeywordExtractor
 from RAG import RAG
+from AISummayEngine import AISummaryEngine
 import json
 
 
-# region read scenario data
+# process scenario data
 with open('config/scenarios.txt', 'r') as file:
-    data = [{'scenario': re.sub(r'^\d+\.\s*|\n$', '', o)} for o in list(file)]
+    scenarioData = [{'scenario': re.sub(r'^\d+\.\s*|\n$', '', o)} for o in list(file)]
 
-
-# object initialization
 keywordExtractor = KeywordExtractor()
 ragModel = RAG()
 
-for o in data:
+for o in scenarioData:
     o['keyword'] = keywordExtractor.extractKeyword(o['scenario'])
     o['dataFieldKey'] = ragModel.getRelatedContent(', '.join(o['keyword']), './config/dataSchema.json')[0]['fieldName']
 
-print(json.dumps(data, indent=4))
+print(json.dumps(scenarioData, indent=4))
 
+
+data = {
+    "hitRule": {
+        "ruleId": 'RLT1'
+    },
+    "customerRisk": {
+        "currentRisk": 'high'
+    },
+    "customer": {
+        "nationality": 'Msia',
+        "age": 36
+    }
+}
+
+# generate summary
+aiSummaryEngine = AISummaryEngine([o['dataFieldKey'] for o in scenarioData], './config/dataSchema.json')
+aiSummaryEngine.getAISummaryContent(data)
