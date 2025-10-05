@@ -3,7 +3,8 @@ from DecisionAgent import CaseDecisionAgent
 import json
 
 class AISummaryEngine():
-    def __init__(self, scenarioKeyFilename, schemaDescFilename, scenarioFilename, verbose: bool = False):
+    def __init__(self, llm, scenarioKeyFilename, schemaDescFilename, scenarioFilename, verbose: bool = False):
+        self.llm = llm
         self.scenarioKeyFilename = scenarioKeyFilename
         self.schemaDescFilename = schemaDescFilename
         self.scenarioFilename = scenarioFilename
@@ -40,7 +41,7 @@ class AISummaryEngine():
     def getAISummaryContent(self, jsonData):
         observations = self.getObservation(jsonData)
         scenarios = self.readFile(self.scenarioFilename)
-        decisionAgent = CaseDecisionAgent(verbose=self.verbose)
+        decisionAgent = CaseDecisionAgent(model= self.llm, verbose=self.verbose)
 
         if self.verbose:
             print(observations, scenarios)

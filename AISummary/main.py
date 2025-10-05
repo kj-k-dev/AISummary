@@ -1,6 +1,10 @@
 from AISummayEngine import AISummaryEngine
 import json
 
+with open('config/appSetting.json', 'r') as file:
+    config = json.load(file)
+    verbose = config['verbose']
+    llm = config['llm']
 
 # data = {
 #     "hitRule": {
@@ -18,6 +22,7 @@ data = {'hitRule': [{'ruleId': '', 'scenarioDescription': 'MANUAL TRANSACTION CA
 
 # generate summary
 aiSummaryEngine = AISummaryEngine(
+    llm,
     './data/scenarioKeyMapping.json',
     './config/dataSchema.json',
     './config/scenarios.txt',

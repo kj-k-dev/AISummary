@@ -1,0 +1,4 @@
+{
+    "verbose": true,
+    "llm": "llama3.2:latest" 
+}
