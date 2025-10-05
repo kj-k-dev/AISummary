@@ -1,37 +1,27 @@
-import re
-from keywordExtractor import KeywordExtractor
-from RAG import RAG
 from AISummayEngine import AISummaryEngine
 import json
 
 
-# process scenario data
-with open('config/scenarios.txt', 'r') as file:
-    scenarioData = [{'scenario': re.sub(r'^\d+\.\s*|\n$', '', o)} for o in list(file)]
-
-keywordExtractor = KeywordExtractor()
-ragModel = RAG()
-
-for o in scenarioData:
-    o['keyword'] = keywordExtractor.extractKeyword(o['scenario'])
-    o['dataFieldKey'] = ragModel.getRelatedContent(', '.join(o['keyword']), './config/dataSchema.json')[0]['fieldName']
-
-print(json.dumps(scenarioData, indent=4))
-
-
-data = {
-    "hitRule": {
-        "ruleId": 'RLT1'
-    },
-    "customerRisk": {
-        "currentRisk": 'high'
-    },
-    "customer": {
-        "nationality": 'Msia',
-        "age": 36
-    }
-}
+# data = {
+#     "hitRule": {
+#         "ruleId": 'RLT1'
+#     },
+#     "customerRisk": {
+#         "currentRisk": 'high'
+#     },
+#     "customer": {
+#         "nationality": 'Msia',
+#         "age": 36
+#     }
+# }
+data = {'hitRule': [{'ruleId': '', 'scenarioDescription': 'MANUAL TRANSACTION CASE'}, {'ruleId': 'RLT1', 'scenarioDescription': 'Large Cash Deposit (>= 10000 in MYR)'}], 'transactionSummary': ['The total transaction amount is 150.00', 'The total transaction count is 1', 'Rule ID  MANUAL TRANSACTION CASE detected on 20221007', 'Rule ID RLT1 Large Cash Deposit (>= 10000 in MYR) detected on 20230302 to 20230314'], 'customer': {'cifId': '110000147', 'cifName': 'ABDULLAH B MUSA', 'id': '', 'dob': 19340101, 'age': '91', 'nationality': '', 'occupation': '', 'industry': '', 'monthlyIncome': ''}, 'customerCurrentRisk': '', 'customerPreviousRisk': '', 'customerManualRisk': '', 'riskModelFactor': '', 'riskFactorValue': '', 'caseHistory': '', 'counterparties': ''}
 
 # generate summary
-aiSummaryEngine = AISummaryEngine([o['dataFieldKey'] for o in scenarioData], './config/dataSchema.json')
-aiSummaryEngine.getAISummaryContent(data)
+aiSummaryEngine = AISummaryEngine(
+    './data/scenarioKeyMapping.json',
+    './config/dataSchema.json',
+    './config/scenarios.txt',
+    verbose=False
+)
+response = aiSummaryEngine.getAISummaryContent(data)
+print(json.dumps(response, indent=4))

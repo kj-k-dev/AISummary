@@ -1,0 +1,1 @@
+[{"scenario": "Customer has high risk.", "keyword": ["high risk", "customer"], "dataFieldKey": "customerRisk_currentRisk"}, {"scenario": "Customer hit rule RLT1.", "keyword": ["customer hit rule rlt1"], "dataFieldKey": "hitRule_ruleId"}]
